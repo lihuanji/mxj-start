@@ -1,0 +1,19 @@
+#! /usr/bin/env node
+
+const yargs = require('yargs');
+const init = require('../src/index.js');
+
+const argv = yargs.option('a', {
+    alias: 'all',
+    demand: 'false',
+    default: 'fasle',
+    type: 'boolean',
+    description: '是否删除全部node_modules'
+})
+.usage('mxj-start [options]')
+.example(
+'mxj-start', '删除node_modules下的@business目录和package-lock.json，并运行npm run serve'
+).help('h').argv;
+
+// 开始运行
+init(argv);
